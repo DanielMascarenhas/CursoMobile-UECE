@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.jbdc;
+package br.com.projeto.jdbc;
 
+import br.com.projeto.jdbc.ConnectionFactory;
 import javax.swing.JOptionPane;
 
 /**
