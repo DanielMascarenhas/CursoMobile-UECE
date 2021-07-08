@@ -29,17 +29,17 @@ public class ProdutosDAO {
     public void cadastrarProdutos(Produtos pro, int CodigoCliente){
         try {
             String sql =
-                    "INSERT INTO tb_produtos(id,descricao,preço,qtd_estoque,CodigoCliente)"
+                    "INSERT INTO tb_produtos(id,descricao,preco,qtd_estoque,for_id)"
                     + " values(?,?,?,?,?) ";
             
             PreparedStatement stmt = connection.prepareStatement(sql);
             
             
-            stmt.setInt(0, pro.getId());
-            stmt.setString(1, pro.getDescricao());
-            stmt.setInt(2, pro.getPreço());
-            stmt.setInt(3, pro.getQtd_estoque());
-            stmt.setInt(4, CodigoCliente);
+            //stmt.setInt(1, pro.getId());
+            stmt.setString(2, pro.getDescricao());
+            stmt.setInt(3, pro.getPreço());
+            stmt.setInt(4, pro.getQtd_estoque());
+            stmt.setInt(5, CodigoCliente);
             
  
             
