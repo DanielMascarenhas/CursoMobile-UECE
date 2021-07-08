@@ -128,6 +128,14 @@ public class JFrmCliente extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Cod:");
 
+        txtCodigo.setEditable(false);
+        txtCodigo.setBackground(new java.awt.Color(102, 102, 102));
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Nome:");
 
@@ -256,6 +264,11 @@ public class JFrmCliente extends javax.swing.JFrame {
         });
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPDadosPessoaisLayout = new javax.swing.GroupLayout(jPDadosPessoais);
         jPDadosPessoais.setLayout(jPDadosPessoaisLayout);
@@ -913,6 +926,45 @@ public class JFrmCliente extends javax.swing.JFrame {
             });
         }
     }//GEN-LAST:event_txtNomeTabelaKeyPressed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        String nome = txtNome.getText();
+        Clientes cli = new Clientes();
+        
+        ClientesDAO dao = new ClientesDAO();
+
+        cli = dao.buscaPorNome(nome);
+
+        DefaultTableModel dados = (DefaultTableModel) tbClientes.getModel();
+        dados.setNumRows(0);
+
+        if (cli.getNome() != null) {
+            
+                txtCodigo.setText(String.valueOf(cli.getId()));
+                txtNome.setText(cli.getNome());
+                txtRg.setText(cli.getRg());
+                txtRg.setText(cli.getRg());
+                txtCPF.setText(cli.getCpf());
+                txtEmail.setText(cli.getEmail());
+                txtTelefone.setText(cli.getTelefone());
+                txtCelular.setText(cli.getCelular());
+                txtCep.setText(cli.getCep());
+                txtEndereco.setText(cli.getEndereco());
+                txtNumero.setText(String.valueOf(cli.getNumero()));
+                txtComplemento.setText(cli.getComplemento());
+                txtbairro.setText(cli.getBairro());
+                txtCidade.setText(cli.getCidade());
+                cbUf.setSelectedItem(cli.getUf());
+        } else{
+            
+        }
+        
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     /**
      * @param args the command line arguments

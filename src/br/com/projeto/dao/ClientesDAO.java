@@ -130,6 +130,41 @@ public List<Clientes> consultaPorNome(String nome){
         }
     }
 
+public Clientes buscaPorNome(String nome){
+        try {
+            List<Clientes> lista = new ArrayList<>();            
+            String sql = "SELECT * FROM tb_clientes WHERE nome = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nome);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            Clientes cli = new Clientes();
+            if(rs.next()){
+                
+                cli.setId(rs.getInt("id"));
+                cli.setNome(rs.getString("nome"));
+                cli.setRg(rs.getString("rg"));
+                cli.setCpf(rs.getString("cpf"));
+                cli.setEmail(rs.getString("email"));
+                cli.setTelefone(rs.getString("telefone"));
+                cli.setCelular(rs.getString("celular"));
+                cli.setCep(rs.getString("cep"));
+                cli.setEndereco(rs.getString("endereco"));
+                cli.setNumero(rs.getInt("numero"));
+                cli.setComplemento(rs.getString("complemento"));
+                cli.setBairro(rs.getString("bairro"));
+                cli.setCidade(rs.getString("cidade"));
+                cli.setUf(rs.getString("estado"));
+            }
+            return cli;         
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado!"+ ex);
+            return null;
+        }
+    }
+
     public void excluirCliente(Clientes cli) {
         try {
 
