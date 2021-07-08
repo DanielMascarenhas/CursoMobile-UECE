@@ -71,6 +71,9 @@ public class JFrmCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbClientes = new javax.swing.JTable();
+        jLabel21 = new javax.swing.JLabel();
+        txtNomeTabela = new javax.swing.JTextField();
+        btnPesquisarTabela = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -391,20 +394,50 @@ public class JFrmCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbClientes);
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText("Nome:");
+
+        txtNomeTabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeTabelaKeyPressed(evt);
+            }
+        });
+
+        btnPesquisarTabela.setText("Pesquisar");
+        btnPesquisarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisarTabela)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtNomeTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarTabela))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 168, Short.MAX_VALUE))
+                .addGap(82, 82, 82))
         );
 
         jTabbedPane.addTab("Clientes", jPanel2);
@@ -434,8 +467,9 @@ public class JFrmCliente extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Pesquisa de produtos", jPanel5);
@@ -628,13 +662,13 @@ public class JFrmCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void listar(){
+    public void listar() {
         ClientesDAO dao = new ClientesDAO();
-        
+
         List<Clientes> lista = dao.listarClientes();
-        DefaultTableModel dados = (DefaultTableModel)tbClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tbClientes.getModel();
         dados.setNumRows(0);
-        
+
         for (Clientes clientes : lista) {
             dados.addRow(new Object[]{
                 clientes.getId(),
@@ -653,13 +687,10 @@ public class JFrmCliente extends javax.swing.JFrame {
                 clientes.getUf()
             });
         }
-        
+
     }
-    
-    
-    
-    
-    
+
+
     private void txtPreçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreçoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPreçoActionPerformed
@@ -713,21 +744,21 @@ public class JFrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-                     
+
         // TODO add your handling code here:
         Clientes cli = new Clientes();
         cli.setId(Integer.parseInt(txtCodigo.getText()));
-        
+
         ClientesDAO dao = new ClientesDAO();
-        dao.excluirCliente(cli);    
+        dao.excluirCliente(cli);
         new Utilitarios().limpaTela(jPDadosPessoais);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-                                          
+
         // TODO add your handling code here:
         Clientes cli = new Clientes();
-        
+
         cli.setNome(txtNome.getText());
         cli.setEmail(txtEmail.getText());
         cli.setCelular(txtCelular.getText());
@@ -741,11 +772,11 @@ public class JFrmCliente extends javax.swing.JFrame {
         cli.setUf(cbUf.getSelectedItem().toString());
         cli.setRg(txtRg.getText());
         cli.setCpf(txtCPF.getText());
-        
+
         cli.setId(Integer.parseInt(txtCodigo.getText()));
-        
+
         ClientesDAO dao = new ClientesDAO();
-        dao.alterarCliente(cli);       
+        dao.alterarCliente(cli);
         new Utilitarios().limpaTela(jPDadosPessoais);
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -773,15 +804,15 @@ public class JFrmCliente extends javax.swing.JFrame {
     private void btnSalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProdutoActionPerformed
         Produtos pro = new Produtos();
         int CodigoCliente = 0;
-        
+
         //pro.setId(Integer.parseInt(txtId.getText()));
         pro.setDescricao(txtDescrição.getText());
         pro.setPreço(Integer.parseInt(txtPreço.getText()));
         pro.setQtd_estoque(Integer.parseInt(txtQuantidade.getText()));
         CodigoCliente = Integer.parseInt(txtCodigoCliente.getText());
-      
+
         ProdutosDAO dao = new ProdutosDAO();
-        dao.cadastrarProdutos(pro,CodigoCliente);
+        dao.cadastrarProdutos(pro, CodigoCliente);
     }//GEN-LAST:event_btnSalvarProdutoActionPerformed
 
     private void txtCodigoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoClienteActionPerformed
@@ -820,6 +851,68 @@ public class JFrmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Utilitarios().limpaTela(jPDadosPessoais);
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnPesquisarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTabelaActionPerformed
+        // TODO add your handling code here:
+        String nome = "%" + txtNomeTabela.getText() + "%";
+
+        ClientesDAO dao = new ClientesDAO();
+
+        List<Clientes> lista = dao.consultaPorNome(nome);
+
+        DefaultTableModel dados = (DefaultTableModel) tbClientes.getModel();
+        dados.setNumRows(0);
+
+        for (Clientes clientes : lista) {
+            dados.addRow(new Object[]{
+                clientes.getId(),
+                clientes.getNome(),
+                clientes.getRg(),
+                clientes.getCpf(),
+                clientes.getEmail(),
+                clientes.getTelefone(),
+                clientes.getCelular(),
+                clientes.getCep(),
+                clientes.getEndereco(),
+                clientes.getNumero(),
+                clientes.getComplemento(),
+                clientes.getBairro(),
+                clientes.getCidade(),
+                clientes.getUf()
+            });
+        }
+    }//GEN-LAST:event_btnPesquisarTabelaActionPerformed
+
+    private void txtNomeTabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeTabelaKeyPressed
+        // TODO add your handling code here:
+        String nome = "%" + txtNomeTabela.getText() + "%";
+
+        ClientesDAO dao = new ClientesDAO();
+
+        List<Clientes> lista = dao.consultaPorNome(nome);
+
+        DefaultTableModel dados = (DefaultTableModel) tbClientes.getModel();
+        dados.setNumRows(0);
+
+        for (Clientes clientes : lista) {
+            dados.addRow(new Object[]{
+                clientes.getId(),
+                clientes.getNome(),
+                clientes.getRg(),
+                clientes.getCpf(),
+                clientes.getEmail(),
+                clientes.getTelefone(),
+                clientes.getCelular(),
+                clientes.getCep(),
+                clientes.getEndereco(),
+                clientes.getNumero(),
+                clientes.getComplemento(),
+                clientes.getBairro(),
+                clientes.getCidade(),
+                clientes.getUf()
+            });
+        }
+    }//GEN-LAST:event_txtNomeTabelaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -862,6 +955,7 @@ public class JFrmCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnPesquisarProduto;
+    private javax.swing.JButton btnPesquisarTabela;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarProduto;
     private javax.swing.JComboBox<String> cbUf;
@@ -878,6 +972,7 @@ public class JFrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -907,6 +1002,7 @@ public class JFrmCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeTabela;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPreço;
     private javax.swing.JTextField txtQuantidade;
