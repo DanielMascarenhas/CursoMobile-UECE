@@ -12,7 +12,7 @@ package br.com.projeto.model;
 public class Produtos {
     private int id;
     private String descricao;
-    private int preço;
+    private double preço;
     private int qtd_estoque;
 
     public int getId() {
@@ -31,11 +31,11 @@ public class Produtos {
         this.descricao = descricao;
     }
 
-    public int getPreço() {
+    public double getPreço() {
         return preço;
     }
 
-    public void setPreço(int preço) {
+    public void setPreço(double preço) {
         this.preço = preço;
     }
 

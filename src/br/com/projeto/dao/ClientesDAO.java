@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 
 import br.com.projeto.jdbc.ConnectionFactory;
 import br.com.projeto.model.Clientes;
+import br.com.projeto.model.Produtos;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -217,4 +218,5 @@ public Clientes buscaPorNome(String nome){
             JOptionPane.showMessageDialog(null, "Erro: " + ex);
         }
     }
+
 }
