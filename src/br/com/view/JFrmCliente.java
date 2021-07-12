@@ -97,6 +97,7 @@ public class JFrmCliente extends javax.swing.JFrame {
         btnNovoProduto = new javax.swing.JButton();
         btnSalvarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -631,6 +632,13 @@ public class JFrmCliente extends javax.swing.JFrame {
             }
         });
 
+        btnEditar1.setText("Editar");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPDadosProdutoLayout = new javax.swing.GroupLayout(jPDadosProduto);
         jPDadosProduto.setLayout(jPDadosProdutoLayout);
         jPDadosProdutoLayout.setHorizontalGroup(
@@ -667,8 +675,10 @@ public class JFrmCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvarProduto)
                         .addGap(18, 18, 18)
+                        .addComponent(btnEditar1)
+                        .addGap(18, 18, 18)
                         .addComponent(btnExcluirProduto)))
-                .addContainerGap(450, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
         jPDadosProdutoLayout.setVerticalGroup(
             jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -690,11 +700,16 @@ public class JFrmCliente extends javax.swing.JFrame {
                 .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnExcluirProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvarProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDadosProdutoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
 
@@ -1034,7 +1049,7 @@ public class JFrmCliente extends javax.swing.JFrame {
 
         //pro.setId(Integer.parseInt(txtId.getText()));
         pro.setDescricao(txtDescrição.getText());
-        pro.setPreço(Integer.parseInt(txtPreço.getText()));
+        pro.setPreço(Double.parseDouble(txtPreço.getText()));
         pro.setQtd_estoque(Integer.parseInt(txtQuantidade.getText()));
 
         ProdutosDAO dao = new ProdutosDAO();
@@ -1060,6 +1075,10 @@ public class JFrmCliente extends javax.swing.JFrame {
         txtQuantidade.setText(tbProdutos.getValueAt(tbProdutos.getSelectedRow(), 3).toString());
         
     }//GEN-LAST:event_tbProdutosMouseClicked
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1098,6 +1117,7 @@ public class JFrmCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnNovo;
