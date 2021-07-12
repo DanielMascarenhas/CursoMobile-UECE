@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import br.com.projeto.jdbc.ConnectionFactory;
+import br.com.projeto.model.Clientes;
 import br.com.projeto.model.Produtos;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -96,6 +97,56 @@ public class ProdutosDAO {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro: " + ex);
+            return null;
+        }
+    }
+
+    public void alterarCliente(Produtos produtos) {
+        try {
+
+            String sql = "UPDATE tb_produtos SET descricao=?, preco=?, qtd_estoque=?"
+                    + " where id=?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, produtos.getDescricao());
+            stmt.setDouble(2, produtos.getPreço());
+            stmt.setInt(3, produtos.getQtd_estoque());
+            
+            stmt.setInt(4, produtos.getId());
+
+            stmt.execute();
+            stmt.close();
+
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!!!");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro: " + ex);
+        }
+    }
+
+    public List<Produtos> consultaPorNome(String descricao) {
+        try {
+            List<Produtos> lista = new ArrayList<>();            
+            String sql = "SELECT * FROM tb_produtos WHERE descricao like ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, descricao);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Produtos produtos = new Produtos();
+                
+                produtos.setId(rs.getInt("id"));
+                produtos.setDescricao(rs.getString("descricao"));
+                produtos.setPreço(rs.getDouble("preco"));
+                produtos.setQtd_estoque(rs.getInt("qtd_estoque"));
+
+                lista.add(produtos);
+            }
+            return lista;         
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro: "+ ex);
             return null;
         }
     }

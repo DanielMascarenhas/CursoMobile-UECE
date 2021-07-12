@@ -82,7 +82,7 @@ public class JFrmCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProdutos = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
-        txtNomeTabela1 = new javax.swing.JTextField();
+        txtDescricaoTabela = new javax.swing.JTextField();
         btnPesquisarTabela1 = new javax.swing.JButton();
         jPDadosProduto = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -93,7 +93,6 @@ public class JFrmCliente extends javax.swing.JFrame {
         txtQuantidade = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtPreço = new javax.swing.JTextField();
-        btnPesquisarProduto = new javax.swing.JButton();
         btnNovoProduto = new javax.swing.JButton();
         btnSalvarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
@@ -527,9 +526,9 @@ public class JFrmCliente extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setText("Nome do Produto:");
 
-        txtNomeTabela1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDescricaoTabela.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNomeTabela1KeyPressed(evt);
+                txtDescricaoTabelaKeyPressed(evt);
             }
         });
 
@@ -551,7 +550,7 @@ public class JFrmCliente extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addGap(12, 12, 12)
-                        .addComponent(txtNomeTabela1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDescricaoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPesquisarTabela1)))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -562,7 +561,7 @@ public class JFrmCliente extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(txtNomeTabela1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescricaoTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarTabela1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -609,8 +608,6 @@ public class JFrmCliente extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisarProduto.setText("Procurar");
-
         btnNovoProduto.setText("+ Novo");
         btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -648,23 +645,20 @@ public class JFrmCliente extends javax.swing.JFrame {
                     .addGroup(jPDadosProdutoLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPDadosProdutoLayout.createSequentialGroup()
-                                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPDadosProdutoLayout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPDadosProdutoLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPDadosProdutoLayout.createSequentialGroup()
+                                        .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPDadosProdutoLayout.createSequentialGroup()
-                                            .addComponent(jLabel19)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPDadosProdutoLayout.createSequentialGroup()
-                                            .addComponent(jLabel18)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(26, 26, 26)
-                                .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPDadosProdutoLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
@@ -686,30 +680,29 @@ public class JFrmCliente extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarProduto))
-                .addGap(20, 20, 20)
-                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(txtDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDadosProdutoLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPDadosProdutoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel16)
+                            .addComponent(txtDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPDadosProdutoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(btnEditar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvarProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(48, 48, 48))
         );
 
@@ -1030,12 +1023,29 @@ public class JFrmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void txtNomeTabela1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeTabela1KeyPressed
+    private void txtDescricaoTabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoTabelaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeTabela1KeyPressed
+    }//GEN-LAST:event_txtDescricaoTabelaKeyPressed
 
     private void btnPesquisarTabela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTabela1ActionPerformed
         // TODO add your handling code here:
+        String descricao = "%" + txtDescricaoTabela.getText() + "%";
+
+        ProdutosDAO dao = new ProdutosDAO();
+
+        List<Produtos> lista = dao.consultaPorNome(descricao);
+
+        DefaultTableModel dados = (DefaultTableModel) tbProdutos.getModel();
+        dados.setNumRows(0);
+
+        for (Produtos produtos : lista) {
+            dados.addRow(new Object[]{
+                produtos.getId(),
+                produtos.getDescricao(),
+                produtos.getPreço(),
+                produtos.getQtd_estoque(),
+            });
+        }
     }//GEN-LAST:event_btnPesquisarTabela1ActionPerformed
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
@@ -1054,6 +1064,7 @@ public class JFrmCliente extends javax.swing.JFrame {
 
         ProdutosDAO dao = new ProdutosDAO();
         dao.cadastrarProdutos(pro);
+        new Utilitarios().limpaTela(jPDadosProduto);
     }//GEN-LAST:event_btnSalvarProdutoActionPerformed
 
     private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
@@ -1078,6 +1089,17 @@ public class JFrmCliente extends javax.swing.JFrame {
 
     private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
         // TODO add your handling code here:
+        Produtos produtos = new Produtos();
+
+        produtos.setDescricao(txtDescrição.getText());
+        produtos.setPreço(Double.parseDouble(txtPreço.getText()));
+        produtos.setQtd_estoque(Integer.parseInt(txtQuantidade.getText()));
+
+        produtos.setId(Integer.parseInt(txtId.getText()));
+
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.alterarCliente(produtos);
+        new Utilitarios().limpaTela(jPDadosProduto);
     }//GEN-LAST:event_btnEditar1ActionPerformed
 
     /**
@@ -1123,7 +1145,6 @@ public class JFrmCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnNovoProduto;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnPesquisarProduto;
     private javax.swing.JButton btnPesquisarTabela;
     private javax.swing.JButton btnPesquisarTabela1;
     private javax.swing.JButton btnSalvar;
@@ -1166,13 +1187,13 @@ public class JFrmCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtComplemento;
+    private javax.swing.JTextField txtDescricaoTabela;
     private javax.swing.JTextField txtDescrição;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeTabela;
-    private javax.swing.JTextField txtNomeTabela1;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPreço;
     private javax.swing.JTextField txtQuantidade;
