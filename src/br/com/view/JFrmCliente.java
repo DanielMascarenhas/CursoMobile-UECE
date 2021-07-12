@@ -513,9 +513,14 @@ public class JFrmCliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo de barras", "Nome do produto", "Quantidade em estoque", "Validade"
+                "Id", "Descricao", "Preço", "Qtd_estoque"
             }
         ));
+        tbProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbProdutos);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -558,9 +563,9 @@ public class JFrmCliente extends javax.swing.JFrame {
                     .addComponent(jLabel22)
                     .addComponent(txtNomeTabela1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarTabela1))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Pesquisa de produtos", jPanel5);
@@ -568,6 +573,8 @@ public class JFrmCliente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Codigo de Barras:");
 
+        txtId.setEditable(false);
+        txtId.setBackground(new java.awt.Color(102, 102, 102));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -708,7 +715,7 @@ public class JFrmCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1043,6 +1050,16 @@ public class JFrmCliente extends javax.swing.JFrame {
         dao.excluirProdutos(pro);
         new Utilitarios().limpaTela(jPDadosProduto);
     }//GEN-LAST:event_btnExcluirProdutoActionPerformed
+
+    private void tbProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutosMouseClicked
+        // TODO add your handling code here:
+        jTabbedPane.setSelectedIndex(3);
+        txtId.setText(tbProdutos.getValueAt(tbProdutos.getSelectedRow(), 0).toString());
+        txtDescrição.setText(tbProdutos.getValueAt(tbProdutos.getSelectedRow(), 1).toString());
+        txtPreço.setText(tbProdutos.getValueAt(tbProdutos.getSelectedRow(), 2).toString());
+        txtQuantidade.setText(tbProdutos.getValueAt(tbProdutos.getSelectedRow(), 3).toString());
+        
+    }//GEN-LAST:event_tbProdutosMouseClicked
 
     /**
      * @param args the command line arguments
