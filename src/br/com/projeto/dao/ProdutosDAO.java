@@ -101,7 +101,7 @@ public class ProdutosDAO {
         }
     }
 
-    public void alterarCliente(Produtos produtos) {
+    public void alterarProduto(Produtos produtos) {
         try {
 
             String sql = "UPDATE tb_produtos SET descricao=?, preco=?, qtd_estoque=?"
