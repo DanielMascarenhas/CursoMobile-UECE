@@ -1025,6 +1025,23 @@ public class JFrmCliente extends javax.swing.JFrame {
 
     private void txtDescricaoTabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoTabelaKeyPressed
         // TODO add your handling code here:
+        String descricao = "%" + txtDescricaoTabela.getText() + "%";
+
+        ProdutosDAO dao = new ProdutosDAO();
+
+        List<Produtos> lista = dao.consultaPorNome(descricao);
+
+        DefaultTableModel dados = (DefaultTableModel) tbProdutos.getModel();
+        dados.setNumRows(0);
+
+        for (Produtos produtos : lista) {
+            dados.addRow(new Object[]{
+                produtos.getId(),
+                produtos.getDescricao(),
+                produtos.getPreço(),
+                produtos.getQtd_estoque(),
+            });
+        }
     }//GEN-LAST:event_txtDescricaoTabelaKeyPressed
 
     private void btnPesquisarTabela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTabela1ActionPerformed
